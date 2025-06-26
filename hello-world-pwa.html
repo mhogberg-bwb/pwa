@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#4285f4">
-    <title>Hello World PWA</title>
+    <meta name="theme-color" content="#635bff">
+    <title>Stripe PWA Checkout</title>
     
     <!-- PWA Manifest -->
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkhlbGxvIFdvcmxkIFBXQSIsCiAgInNob3J0X25hbWUiOiAiSGVsbG8gUFdBIiwKICAiZGVzY3JpcHRpb24iOiAiQSBzaW1wbGUgSGVsbG8gV29ybGQgUHJvZ3Jlc3NpdmUgV2ViIEFwcCIsCiAgInN0YXJ0X3VybCI6ICIuLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiI2ZmZmZmZiIsCiAgInRoZW1lX2NvbG9yIjogIiM0Mjg1ZjQiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlNVGt5SWlCb1pXbG5hSFE5SWpFNU1pSWdkbWxsZDBKdmVEMGlNQ0F3SURFNU1pQXhPVElpSUdacGJHdzlJaU0wTWpnMVpqUWlQZ29nSUNBZ1BHTnBjbU5zWlNCamVEMGlPVFlpSUdONVBTSTVOaUlnY2owaU9EQWlJR1pwYkd3OUlpTm1abVptWmlJZ2MzUnliMnRsUFNJalptWm1abVlpSUhOMGNtOXJaUzEzYVdSMGFEMGlNaUl2UGdvZ0lDQWdQSFJsZUhRZ2VEMGlPVFlpSUhrOUlqRXdOaUlnWm1sc2JEMGlJek0yTXpZek5pSWdkR1Y0ZEMxaGJtTm9iM0k5SW0xcFpHUnNaU0lnWm05dWRDMXphWHBsUFNJeU5DSWdabTl1ZEMxbVlXMXBiSGs5SW0xdmJtOXpjR0ZqWlNJK1NHVnNiRzgrUEM5MFpYaDBQZ284TDNOMlp6ND0iLAogICAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9LAogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU5URXlJaUJvWldsbmFIUTlJalV4TWlJZ2RtbGxkMEp2ZUQwaU1DQXdJRFV4TWlBMU1USWlJR1pwYkd3OUlpTTBNamcxWmpRaVBnb2dJQ0FnUEdOcGNtTnNaU0JqZUQwaU1qVTJJaUJqZVQwaU1qVTJJaUJ5UFNJeU1EQWlJR1pwYkd3OUlpTm1abVptWmlJZ2MzUnliMnRsUFNJalptWm1abVlpSUhOMGNtOXJaUzEzYVdSMGFEMGlOQ0l2UGdvZ0lDQWdQSFJsZUhRZ2VEMGlNalUySWlCNVBTSTBNeUlnWm1sc2JEMGlJek0yTXpZek5pSWdkR1Y0ZEMxaGJtTm9iM0k5SW0xcFpHUnNaU0lnWm05dWRDMXphWHBsUFNJME9DSWdabTl1ZEMxbVlXMXBiSGs5SW0xdmJtOXpjR0ZqWlNJK1NHVnNiRzgrUEM5MFpYaDBQZ284TDNOMlp6ND0iLAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlN0cmlwZSBQV0EgQ2hlY2tvdXQiLAogICJzaG9ydF9uYW1lIjogIlBheW1lbnQgQXBwIiwKICAiZGVzY3JpcHRpb24iOiAiQSBQcm9ncmVzc2l2ZSBXZWIgQXBwIHdpdGggU3RyaXBlIFBheW1lbnQgRWxlbWVudHMiLAogICJzdGFydF91cmwiOiAiLi8iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmZmZmZmYiLAogICJ0aGVtZV9jb2xvciI6ICIjNjM1YmZmIiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCM2FXUjBhRDBpTVRreUlpQm9aV2xuYUhROUlqRTVNaUlnZG1sbGQwSnZlRDBpTUNBd0lERTVNaUF4T1RJaUlHWnBiR3c5SWlNMk16VmlaallpUGdvZ0lDQWdQSEpsWTNRZ2VEMGlNalFpSUhrOUlqSTBJaUIzYVdSMGFEMGlNVFEwSWlCb1pXbG5hSFE5SWpFME5DSWdjbms5SWpJd0lpQm1hV3hzUFNJalptWm1abVlpSUhOMGNtOXJaVDBpSXpZek5XSm1aaUlnYzNSeWIydGxMWGRwWkhSb1BTSXlJaTgrQ2lBZ0lDQThkR1Y0ZENCNFBTSTVOaUlnZVQwaU1URXdJaUJtYVd4c1BTSWpOak0xWW1abUlpQjBaWGgwTFdGdVkyaHZjajBpYldsa1pHeGxJaUJtYjI1MExYTnBlbVU5SWpJNElpQm1iMjUwTFdaaGJXbHNlVDBpYlc5dWIzTndZV05sSWo1UVBDOTBaWGgwUGdvOEwzTjJaejQ9IiwKICAgICAgInNpemVzIjogIjE5MngxOTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogICAgfSwKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlOVEV5SWlCb1pXbG5hSFE5SWpVeE1pSWdkbWxsZDBKdmVEMGlNQ0F3SURVNE1pQTFNVElpSUdacGJHdzlJaU0yTXpWaVptWWlQZ29nSUNBZ1BISmxZM1FnZUQwaU5qUWlJSGs5SWpZMElpQjNhV1IwYUQwaU16ZzBJaUJvWldsbmFIUTlJak00TkNJZ2NuazlJalE0SWlCbWFXeHNQU0lqWm1abVptWWlJSE4wY205clpUMGlJek16ZEdabUlpQnpkSEp2YTJVdGQybGtkR2c5SWpRaUx6NEtJQ0FnSUR4MFpYaDBJSGc5SWpJNU1pSWdlVDBpTWprd0lpQm1hV3hzUFNJaU5qTTFZbVptSWlCMFpYaDBMV0Z1WTJodmNqMGliV2xrWkd4bElpQm1iMjUwTFhOcGVtVTlJalkwSWlCbWIyNTBMV1poYldsc2VUMGliVzl1YjNOd1lXTmxJajVRUEM5MFpYaDBQZ284TDNOMlp6ND0iLAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
     
     <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9IiM0Mjg1ZjQiPgogICAgPGNpcmNsZSBjeD0iOTYiIGN5PSI5NiIgcj0iODAiIGZpbGw9IiNmZmZmZmYiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8dGV4dCB4PSI5NiIgeT0iMTA2IiBmaWxsPSIjMzYzNjM2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjI0IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIj5IZWxsbzwvdGV4dD4KPC9zdmc+">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9IiM2MzViZmYiPgogICAgPHJlY3QgeD0iMjQiIHk9IjI0IiB3aWR0aD0iMTQ0IiBoZWlnaHQ9IjE0NCIgcng9IjIwIiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiM2MzViZmYiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPHRleHQgeD0iOTYiIHk9IjExMCIgZmlsbD0iIzYzNWJmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyOCIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSI+UDwvdGV4dD4KPC9zdmc+">
+    
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
     
     <style>
         * {
@@ -20,129 +23,373 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .app-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            min-height: calc(100vh - 40px);
             display: flex;
             flex-direction: column;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #635bff 0%, #7c3aed 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 20px;
+            background: white;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            margin: 0 auto 15px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            font-size: 28px;
+        }
+
+        .app-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .app-subtitle {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .content {
+            flex: 1;
+            padding: 30px 20px 20px;
+        }
+
+        .product-section {
             text-align: center;
+            margin-bottom: 30px;
             padding: 20px;
+            background: #f8fafc;
+            border-radius: 15px;
         }
 
-        .container {
-            max-width: 400px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .icon {
+        .product-image {
             width: 80px;
             height: 80px;
-            margin: 0 auto 30px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
+            background: linear-gradient(135deg, #635bff, #7c3aed);
+            border-radius: 15px;
+            margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 36px;
+            color: white;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 300;
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1e293b;
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        .product-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #635bff;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .payment-section {
             margin-bottom: 30px;
         }
 
-        .features {
-            text-align: left;
-            margin: 30px 0;
-        }
-
-        .feature {
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1e293b;
             display: flex;
             align-items: center;
-            margin: 15px 0;
-            font-size: 1rem;
         }
 
-        .feature::before {
-            content: "✓";
-            margin-right: 10px;
-            color: #4ade80;
-            font-weight: bold;
+        .section-title::before {
+            content: '💳';
+            margin-right: 8px;
         }
 
-        .install-button {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.1rem;
+        #payment-element {
+            margin-bottom: 20px;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .payment-method {
+            flex: 1;
+            min-width: 80px;
+            padding: 12px 8px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin: 20px 0;
+            background: white;
+        }
+
+        .payment-method:hover {
+            border-color: #635bff;
+            background: #f8fafc;
+        }
+
+        .payment-method.active {
+            border-color: #635bff;
+            background: #f0f0ff;
+        }
+
+        .payment-method-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .payment-method-name {
+            font-size: 0.75rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .pay-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #635bff, #7c3aed);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 91, 255, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .pay-button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 91, 255, 0.4);
+        }
+
+        .pay-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 15px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #635bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .status-message {
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-weight: 500;
             display: none;
         }
 
-        .install-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+        .status-message.error {
+            background: #fee2e2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
         }
 
-        .status {
+        .status-message.success {
+            background: #d1fae5;
+            color: #059669;
+            border: 1px solid #a7f3d0;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
             margin-top: 20px;
-            padding: 15px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
         }
 
+        .feature {
+            text-align: center;
+            padding: 15px 10px;
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .feature-text {
+            font-size: 0.8rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* Mobile optimizations */
         @media (max-width: 480px) {
-            .container {
-                margin: 10px;
-                padding: 30px 20px;
+            .app-container {
+                margin: 0;
+                border-radius: 0;
+                min-height: 100vh;
             }
             
-            h1 {
-                font-size: 2rem;
+            body {
+                padding: 0;
+            }
+            
+            .payment-methods {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* PWA specific styles */
+        @media (display-mode: standalone) {
+            .header {
+                padding-top: max(30px, env(safe-area-inset-top) + 10px);
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="icon">👋</div>
-        <h1>Hello World!</h1>
-        <p class="subtitle">Your first Progressive Web App</p>
-        
-        <div class="features">
-            <div class="feature">Works offline</div>
-            <div class="feature">Installable on your device</div>
-            <div class="feature">Fast and responsive</div>
-            <div class="feature">App-like experience</div>
+    <div class="app-container">
+        <div class="header">
+            <div class="app-icon">💳</div>
+            <h1 class="app-title">Secure Checkout</h1>
+            <p class="app-subtitle">Powered by Stripe</p>
         </div>
 
-        <button id="installButton" class="install-button">
-            📱 Install App
-        </button>
+        <div class="content">
+            <div class="product-section">
+                <div class="product-image">🎧</div>
+                <h2 class="product-name">Premium Headphones</h2>
+                <div class="product-price">$99.99</div>
+                <p class="product-description">
+                    Wireless noise-canceling headphones with premium sound quality
+                </p>
+            </div>
 
-        <div id="status" class="status">
-            <strong>Status:</strong> <span id="statusText">Checking PWA features...</span>
+            <div id="status-message" class="status-message"></div>
+
+            <div class="payment-section">
+                <h3 class="section-title">Payment Method</h3>
+                
+                <div class="payment-methods">
+                    <div class="payment-method active" data-method="card">
+                        <div class="payment-method-icon">💳</div>
+                        <div class="payment-method-name">Card</div>
+                    </div>
+                    <div class="payment-method" data-method="apple-pay">
+                        <div class="payment-method-icon">🍎</div>
+                        <div class="payment-method-name">Apple Pay</div>
+                    </div>
+                    <div class="payment-method" data-method="google-pay">
+                        <div class="payment-method-icon">📱</div>
+                        <div class="payment-method-name">Google Pay</div>
+                    </div>
+                    <div class="payment-method" data-method="paypal">
+                        <div class="payment-method-icon">💼</div>
+                        <div class="payment-method-name">PayPal</div>
+                    </div>
+                </div>
+
+                <form id="payment-form">
+                    <div id="payment-element">
+                        <!-- Stripe Elements will create form elements here -->
+                    </div>
+                    
+                    <button id="submit-button" class="pay-button">
+                        <span id="button-text">Pay $99.99</span>
+                    </button>
+                </form>
+
+                <div id="loading" class="loading">
+                    <div class="spinner"></div>
+                    <p>Processing your payment...</p>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <div class="feature-text">Secure Payments</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-text">Instant Processing</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-text">Mobile Optimized</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🌐</div>
+                    <div class="feature-text">Works Offline</div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -151,38 +398,30 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 const swCode = `
-                    const CACHE_NAME = 'hello-world-pwa-v1';
-                    const urlsToCache = [
-                        '/',
-                        '/offline.html'
-                    ];
-
+                    const CACHE_NAME = 'stripe-pwa-v1';
+                    
                     self.addEventListener('install', event => {
                         event.waitUntil(
                             caches.open(CACHE_NAME)
                                 .then(cache => {
-                                    console.log('Cache opened');
-                                    return cache.addAll(urlsToCache.filter(url => url !== '/'));
+                                    console.log('Cache opened for Stripe PWA');
+                                    return cache.addAll(['/']);
                                 })
                                 .catch(err => console.log('Cache add failed:', err))
                         );
                     });
 
                     self.addEventListener('fetch', event => {
+                        if (event.request.url.includes('stripe.com') || 
+                            event.request.url.includes('api.stripe.com')) {
+                            // Always fetch Stripe requests from network
+                            return;
+                        }
+                        
                         event.respondWith(
                             caches.match(event.request)
                                 .then(response => {
-                                    if (response) {
-                                        return response;
-                                    }
-                                    return fetch(event.request).catch(() => {
-                                        if (event.request.destination === 'document') {
-                                            return new Response(
-                                                '<!DOCTYPE html><html><head><title>Offline</title><style>body{font-family:sans-serif;text-align:center;padding:50px;background:#f0f0f0;}</style></head><body><h1>You are offline</h1><p>This page is not available offline.</p></body></html>',
-                                                { headers: { 'Content-Type': 'text/html' } }
-                                            );
-                                        }
-                                    });
+                                    return response || fetch(event.request);
                                 })
                         );
                     });
@@ -193,71 +432,245 @@
 
                 navigator.serviceWorker.register(swUrl)
                     .then(registration => {
-                        console.log('SW registered: ', registration);
-                        updateStatus('Service Worker registered ✓');
+                        console.log('SW registered for Stripe PWA');
                     })
                     .catch(registrationError => {
-                        console.log('SW registration failed: ', registrationError);
-                        updateStatus('Service Worker registration failed ✗');
+                        console.log('SW registration failed:', registrationError);
                     });
             });
         }
 
-        // Install prompt handling
-        let deferredPrompt;
-        const installButton = document.getElementById('installButton');
+        // Stripe Integration
+        // IMPORTANT: Replace with your actual Stripe publishable key
+        const stripe = Stripe('pk_test_51234567890abcdef...'); // Replace with your key
+        
+        let elements;
+        let paymentElement;
 
+        // Initialize Stripe Elements
+        async function initializeStripe() {
+            try {
+                // Create payment intent on your server and get client secret
+                // For demo purposes, we'll simulate this
+                const clientSecret = await createPaymentIntent();
+                
+                elements = stripe.elements({
+                    clientSecret: clientSecret,
+                    appearance: {
+                        theme: 'stripe',
+                        variables: {
+                            colorPrimary: '#635bff',
+                            colorBackground: '#ffffff',
+                            colorText: '#30313d',
+                            colorDanger: '#df1b41',
+                            fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
+                            spacingUnit: '4px',
+                            borderRadius: '12px',
+                        },
+                        rules: {
+                            '.Input': {
+                                border: '2px solid #e2e8f0',
+                                boxShadow: 'none',
+                                padding: '12px',
+                            },
+                            '.Input:focus': {
+                                border: '2px solid #635bff',
+                                boxShadow: '0 0 0 3px rgba(99, 91, 255, 0.1)',
+                            },
+                            '.Label': {
+                                fontWeight: '600',
+                                marginBottom: '8px',
+                            }
+                        }
+                    }
+                });
+
+                paymentElement = elements.create('payment', {
+                    layout: {
+                        type: 'accordion',
+                        defaultCollapsed: false,
+                        radios: true,
+                        spacedAccordionItems: true
+                    },
+                    paymentMethodOrder: ['card', 'apple_pay', 'google_pay', 'paypal']
+                });
+
+                paymentElement.mount('#payment-element');
+                
+                // Handle real-time validation errors from the payment element
+                paymentElement.on('change', (event) => {
+                    if (event.error) {
+                        showMessage(event.error.message, 'error');
+                    } else {
+                        hideMessage();
+                    }
+                });
+
+            } catch (error) {
+                console.error('Stripe initialization error:', error);
+                showMessage('Payment system unavailable. Please try again later.', 'error');
+            }
+        }
+
+        // Simulate creating payment intent (replace with actual server call)
+        async function createPaymentIntent() {
+            // In a real app, this would be a call to your server
+            // return fetch('/create-payment-intent', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({ amount: 9999, currency: 'usd' })
+            // }).then(r => r.json()).then(data => data.client_secret);
+            
+            // For demo, return a mock client secret format
+            return 'pi_test_1234567890_secret_test123456789';
+        }
+
+        // Handle form submission
+        document.getElementById('payment-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            if (!stripe || !elements) {
+                showMessage('Stripe not initialized. Please refresh the page.', 'error');
+                return;
+            }
+
+            setLoading(true);
+
+            try {
+                const { error, paymentIntent } = await stripe.confirmPayment({
+                    elements,
+                    confirmParams: {
+                        return_url: window.location.href,
+                        receipt_email: 'customer@example.com', // Get from form
+                    },
+                    redirect: 'if_required'
+                });
+
+                if (error) {
+                    if (error.type === 'card_error' || error.type === 'validation_error') {
+                        showMessage(error.message, 'error');
+                    } else {
+                        showMessage('An unexpected error occurred.', 'error');
+                    }
+                } else if (paymentIntent.status === 'succeeded') {
+                    showMessage('Payment successful! Thank you for your purchase.', 'success');
+                    
+                    // Send confirmation notification if supported
+                    if ('serviceWorker' in navigator && 'Notification' in window) {
+                        Notification.requestPermission().then(permission => {
+                            if (permission === 'granted') {
+                                new Notification('Payment Successful! 🎉', {
+                                    body: 'Your order for Premium Headphones has been confirmed.',
+                                    icon: '/icon-192.png',
+                                    badge: '/badge-72.png'
+                                });
+                            }
+                        });
+                    }
+                } else {
+                    showMessage('Payment processing. Please wait...', 'error');
+                }
+            } catch (err) {
+                console.error('Payment error:', err);
+                showMessage('Payment failed. Please try again.', 'error');
+            }
+
+            setLoading(false);
+        });
+
+        // Payment method selection
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', () => {
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('active'));
+                method.classList.add('active');
+                
+                const methodType = method.dataset.method;
+                console.log('Selected payment method:', methodType);
+                
+                // You could filter payment element options based on selection
+                // This is handled automatically by Stripe Elements
+            });
+        });
+
+        // Utility functions
+        function showMessage(messageText, type = 'error') {
+            const messageContainer = document.getElementById('status-message');
+            messageContainer.textContent = messageText;
+            messageContainer.className = `status-message ${type}`;
+            messageContainer.style.display = 'block';
+            
+            if (type === 'success') {
+                setTimeout(() => hideMessage(), 5000);
+            }
+        }
+
+        function hideMessage() {
+            const messageContainer = document.getElementById('status-message');
+            messageContainer.style.display = 'none';
+        }
+
+        function setLoading(isLoading) {
+            const submitButton = document.getElementById('submit-button');
+            const buttonText = document.getElementById('button-text');
+            const loadingDiv = document.getElementById('loading');
+            
+            if (isLoading) {
+                submitButton.disabled = true;
+                buttonText.textContent = 'Processing...';
+                loadingDiv.classList.add('show');
+            } else {
+                submitButton.disabled = false;
+                buttonText.textContent = 'Pay $99.99';
+                loadingDiv.classList.remove('show');
+            }
+        }
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', () => {
+            // Note: In demo mode, we skip Stripe initialization to avoid errors
+            // Uncomment the line below when you have a real Stripe key
+            // initializeStripe();
+            
+            // For demo purposes, show a message about setup
+            setTimeout(() => {
+                showMessage('Demo mode: Add your Stripe publishable key to enable payments', 'error');
+            }, 1000);
+        });
+
+        // Handle install prompt
+        let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            installButton.style.display = 'block';
-            updateStatus('Ready to install! Click the install button ✓');
+            
+            // You could show a custom install button here
+            console.log('PWA install prompt available');
         });
 
-        installButton.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                
-                if (outcome === 'accepted') {
-                    updateStatus('App installed successfully! ✓');
-                } else {
-                    updateStatus('Installation cancelled');
+        // Apple Pay / Google Pay availability check
+        if (window.PaymentRequest) {
+            const paymentMethods = [
+                {
+                    supportedMethods: 'https://apple.com/apple-pay',
+                    data: { version: 3, merchantIdentifier: 'merchant.example.com' }
+                },
+                {
+                    supportedMethods: 'https://google.com/pay',
+                    data: { environment: 'TEST', merchantId: '12345678901234567890' }
                 }
-                
-                deferredPrompt = null;
-                installButton.style.display = 'none';
-            }
-        });
+            ];
 
-        // Check if app is already installed
-        window.addEventListener('appinstalled', () => {
-            updateStatus('App installed and ready to use! ✓');
-            installButton.style.display = 'none';
-        });
+            const paymentRequest = new PaymentRequest(paymentMethods, {
+                total: { label: 'Total', amount: { currency: 'USD', value: '99.99' } }
+            });
 
-        // Status updates
-        function updateStatus(message) {
-            document.getElementById('statusText').textContent = message;
+            paymentRequest.canMakePayment().then(canPay => {
+                if (canPay) {
+                    console.log('Digital wallet payments available');
+                    // Enable wallet payment buttons
+                }
+            });
         }
-
-        // Initial status check
-        setTimeout(() => {
-            if (window.matchMedia('(display-mode: standalone)').matches) {
-                updateStatus('Running as installed app ✓');
-            } else if (deferredPrompt) {
-                updateStatus('Ready to install ✓');
-            } else {
-                updateStatus('PWA features loaded ✓');
-            }
-        }, 1000);
-
-        // Add some interactivity
-        document.querySelector('.icon').addEventListener('click', () => {
-            const icons = ['👋', '🎉', '🚀', '💫', '⭐'];
-            const randomIcon = icons[Math.floor(Math.random() * icons.length)];
-            document.querySelector('.icon').textContent = randomIcon;
-        });
     </script>
 </body>
 </html>
