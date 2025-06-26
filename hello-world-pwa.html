@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4285f4">
+    <title>Hello World PWA</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkhlbGxvIFdvcmxkIFBXQSIsCiAgInNob3J0X25hbWUiOiAiSGVsbG8gUFdBIiwKICAiZGVzY3JpcHRpb24iOiAiQSBzaW1wbGUgSGVsbG8gV29ybGQgUHJvZ3Jlc3NpdmUgV2ViIEFwcCIsCiAgInN0YXJ0X3VybCI6ICIuLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiI2ZmZmZmZiIsCiAgInRoZW1lX2NvbG9yIjogIiM0Mjg1ZjQiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlNVGt5SWlCb1pXbG5hSFE5SWpFNU1pSWdkbWxsZDBKdmVEMGlNQ0F3SURFNU1pQXhPVElpSUdacGJHdzlJaU0wTWpnMVpqUWlQZ29nSUNBZ1BHTnBjbU5zWlNCamVEMGlPVFlpSUdONVBTSTVOaUlnY2owaU9EQWlJR1pwYkd3OUlpTm1abVptWmlJZ2MzUnliMnRsUFNJalptWm1abVlpSUhOMGNtOXJaUzEzYVdSMGFEMGlNaUl2UGdvZ0lDQWdQSFJsZUhRZ2VEMGlPVFlpSUhrOUlqRXdOaUlnWm1sc2JEMGlJek0yTXpZek5pSWdkR1Y0ZEMxaGJtTm9iM0k5SW0xcFpHUnNaU0lnWm05dWRDMXphWHBsUFNJeU5DSWdabTl1ZEMxbVlXMXBiSGs5SW0xdmJtOXpjR0ZqWlNJK1NHVnNiRzgrUEM5MFpYaDBQZ284TDNOMlp6ND0iLAogICAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9LAogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU5URXlJaUJvWldsbmFIUTlJalV4TWlJZ2RtbGxkMEp2ZUQwaU1DQXdJRFV4TWlBMU1USWlJR1pwYkd3OUlpTTBNamcxWmpRaVBnb2dJQ0FnUEdOcGNtTnNaU0JqZUQwaU1qVTJJaUJqZVQwaU1qVTJJaUJ5UFNJeU1EQWlJR1pwYkd3OUlpTm1abVptWmlJZ2MzUnliMnRsUFNJalptWm1abVlpSUhOMGNtOXJaUzEzYVdSMGFEMGlOQ0l2UGdvZ0lDQWdQSFJsZUhRZ2VEMGlNalUySWlCNVBTSTBNeUlnWm1sc2JEMGlJek0yTXpZek5pSWdkR1Y0ZEMxaGJtTm9iM0k5SW0xcFpHUnNaU0lnWm05dWRDMXphWHBsUFNJME9DSWdabTl1ZEMxbVlXMXBiSGs5SW0xdmJtOXpjR0ZqWlNJK1NHVnNiRzgrUEM5MFpYaDBQZ284TDNOMlp6ND0iLAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9IiM0Mjg1ZjQiPgogICAgPGNpcmNsZSBjeD0iOTYiIGN5PSI5NiIgcj0iODAiIGZpbGw9IiNmZmZmZmYiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8dGV4dCB4PSI5NiIgeT0iMTA2IiBmaWxsPSIjMzYzNjM2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjI0IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIj5IZWxsbzwvdGV4dD4KPC9zdmc+">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .features {
+            text-align: left;
+            margin: 30px 0;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            font-size: 1rem;
+        }
+
+        .feature::before {
+            content: "✓";
+            margin-right: 10px;
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        .install-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .install-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">👋</div>
+        <h1>Hello World!</h1>
+        <p class="subtitle">Your first Progressive Web App</p>
+        
+        <div class="features">
+            <div class="feature">Works offline</div>
+            <div class="feature">Installable on your device</div>
+            <div class="feature">Fast and responsive</div>
+            <div class="feature">App-like experience</div>
+        </div>
+
+        <button id="installButton" class="install-button">
+            📱 Install App
+        </button>
+
+        <div id="status" class="status">
+            <strong>Status:</strong> <span id="statusText">Checking PWA features...</span>
+        </div>
+    </div>
+
+    <script>
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                const swCode = `
+                    const CACHE_NAME = 'hello-world-pwa-v1';
+                    const urlsToCache = [
+                        '/',
+                        '/offline.html'
+                    ];
+
+                    self.addEventListener('install', event => {
+                        event.waitUntil(
+                            caches.open(CACHE_NAME)
+                                .then(cache => {
+                                    console.log('Cache opened');
+                                    return cache.addAll(urlsToCache.filter(url => url !== '/'));
+                                })
+                                .catch(err => console.log('Cache add failed:', err))
+                        );
+                    });
+
+                    self.addEventListener('fetch', event => {
+                        event.respondWith(
+                            caches.match(event.request)
+                                .then(response => {
+                                    if (response) {
+                                        return response;
+                                    }
+                                    return fetch(event.request).catch(() => {
+                                        if (event.request.destination === 'document') {
+                                            return new Response(
+                                                '<!DOCTYPE html><html><head><title>Offline</title><style>body{font-family:sans-serif;text-align:center;padding:50px;background:#f0f0f0;}</style></head><body><h1>You are offline</h1><p>This page is not available offline.</p></body></html>',
+                                                { headers: { 'Content-Type': 'text/html' } }
+                                            );
+                                        }
+                                    });
+                                })
+                        );
+                    });
+                `;
+
+                const blob = new Blob([swCode], { type: 'application/javascript' });
+                const swUrl = URL.createObjectURL(blob);
+
+                navigator.serviceWorker.register(swUrl)
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                        updateStatus('Service Worker registered ✓');
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                        updateStatus('Service Worker registration failed ✗');
+                    });
+            });
+        }
+
+        // Install prompt handling
+        let deferredPrompt;
+        const installButton = document.getElementById('installButton');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installButton.style.display = 'block';
+            updateStatus('Ready to install! Click the install button ✓');
+        });
+
+        installButton.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                
+                if (outcome === 'accepted') {
+                    updateStatus('App installed successfully! ✓');
+                } else {
+                    updateStatus('Installation cancelled');
+                }
+                
+                deferredPrompt = null;
+                installButton.style.display = 'none';
+            }
+        });
+
+        // Check if app is already installed
+        window.addEventListener('appinstalled', () => {
+            updateStatus('App installed and ready to use! ✓');
+            installButton.style.display = 'none';
+        });
+
+        // Status updates
+        function updateStatus(message) {
+            document.getElementById('statusText').textContent = message;
+        }
+
+        // Initial status check
+        setTimeout(() => {
+            if (window.matchMedia('(display-mode: standalone)').matches) {
+                updateStatus('Running as installed app ✓');
+            } else if (deferredPrompt) {
+                updateStatus('Ready to install ✓');
+            } else {
+                updateStatus('PWA features loaded ✓');
+            }
+        }, 1000);
+
+        // Add some interactivity
+        document.querySelector('.icon').addEventListener('click', () => {
+            const icons = ['👋', '🎉', '🚀', '💫', '⭐'];
+            const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+            document.querySelector('.icon').textContent = randomIcon;
+        });
+    </script>
+</body>
+</html>
